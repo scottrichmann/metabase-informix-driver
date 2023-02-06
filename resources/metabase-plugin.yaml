@@ -22,12 +22,16 @@ driver:
         - dbname
         - display-name: Database name
           placeholder: insert_name_here
-    - merge:
-        - additional-options
-        - display-name: Servername
-          placeholder: INFORMIXSERVER=insert_name_here;DELIMIDENT=y
     - user
     - password
+    - advanced-options-start
+    - name: additional-options
+      display-name: Additional JDBC options
+      placeholder: INFORMIXSERVER=insert_name_here;DELIMIDENT=y
+      required: false
+      visible-if:
+        advanced-options: true
+    - default-advanced-options
 init:
   - step: load-namespace
     namespace: metabase.driver.ibminformix
